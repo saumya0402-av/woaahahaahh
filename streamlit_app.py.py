@@ -13,9 +13,13 @@ st.subheader("To the one who madee myy lifeeee thee besttt by justtt beingg in i
 
 # --- PHOTO SECTION ---
 # Replace 'candidate photo.jpg' with the actual path to your photos
- st.columns(2)
+ col1, col2 = st.columns(2)
 
-    st.image("candidate photo.jpg", caption="A favorite memory ❤️")
+with col1:
+  st.image("candidate photo.jpg", caption="A favourite memory")
+
+with col2:
+  st.image("CONFIRMATION CARD.jpg", caption="happy birthday!")
 
 # --- HEARTFELT MESSAGE ---
 st.write("---")
@@ -31,6 +35,7 @@ if st.button('Click for a surprise!'):
     st.confetti = True
 
     st.success("You are loved! Enjoy your special day! 🥳")
+
 
 
 
