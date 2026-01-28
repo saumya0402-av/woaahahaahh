@@ -8,8 +8,8 @@ st.set_page_config(page_title="Happy Birthday!", page_icon="🎂")
 st.balloons()
 
 # Header Section
-st.title("🎂 Happy Birthday, Bestie!")
-st.subheader("To someone who makes the world a lot brighter.")
+st.title("🎂 Happiestttt Birthday, dessiestttt potliiiiii !")
+st.subheader("To the one who madee myy lifeeee thee besttt by justtt beingg in ittt.")
 
 # --- PHOTO SECTION ---
 # Replace 'photo1.jpg' with the actual path to your photos
@@ -33,4 +33,5 @@ May this year be your best one yet!
 if st.button('Click for a surprise!'):
     st.snow() # Adds a magical snow effect
     st.confetti = True
+
     st.success("You are loved! Enjoy your special day! 🥳")
