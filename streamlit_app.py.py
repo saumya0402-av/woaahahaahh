@@ -1,88 +1,86 @@
 import streamlit as st
 
-# 1. Page Setup
-st.set_page_config(page_title="Happy Birthday!", page_icon="🌙", layout="wide")
+# 1. Page Configuration
+st.set_page_config(page_title="HBD Special Someone", page_icon="❤️", layout="wide")
 
-# 2. Dark Theme & Glow CSS
+# 2. Custom CSS for Maroon Theme and Glowing Borders
 st.markdown("""
     <style>
+    /* Main Background */
     .stApp {
-        background-color: #0e1117;
-        background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0e1117 100%);
+        background: radial-gradient(circle, #4a0000 0%, #2b0000 100%);
         color: #ffffff;
     }
     
     /* Glowing Title */
-    .glow-text {
-        font-size: 60px !important;
-        font-weight: 800;
+    .main-title {
+        font-family: 'Georgia', serif;
+        font-size: 65px !important;
         text-align: center;
-        color: #fff;
-        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff;
-        padding: 20px;
+        color: #ff4d4d;
+        text-shadow: 0 0 15px #ff0000, 0 0 25px #800000;
+        margin-bottom: 10px;
     }
 
-    /* Smaller, rounded photos with borders */
+    /* Glowing Image Borders */
     .stImage > img {
+        border: 3px solid #ff4d4d;
         border-radius: 15px;
-        border: 2px solid #3e3e3e;
-        transition: transform 0.3s ease;
+        box-shadow: 0 0 15px #ff4d4d, 0 0 5px #ff4d4d;
+        transition: transform 0.4s ease;
     }
+    
     .stImage > img:hover {
-        transform: scale(1.05);
-        border-color: #00d4ff;
+        transform: scale(1.08);
+        box-shadow: 0 0 25px #ff0000, 0 0 15px #ff4d4d;
     }
 
-    /* Custom Button Style */
-    .stButton>button {
-        width: 100%;
-        border-radius: 20px;
-        background: linear-gradient(45deg, #00d4ff, #0055ff);
-        color: white;
-        font-weight: bold;
-        border: none;
-        padding: 10px;
+    /* Styling the Expander/Vault */
+    .streamlit-expanderHeader {
+        background-color: #600000 !important;
+        color: white !important;
+        border-radius: 10px !important;
+        font-size: 20px !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. Intro Surprise
+# 3. Floating Balloons
 st.balloons()
-st.markdown('<p class="glow-text">HAPPY BIRTHDAY!</p>', unsafe_allow_html=True)
 
-# 4. Main Photo Gallery (Smaller Sizes)
-st.write("### 📸 Captured Moments")
-col1, col2, col3 = st.columns(3) # Using 3 columns makes images smaller
+# 4. Header Section
+st.markdown('<p class="main-title">Happy Birthday! ❤️</p>', unsafe_allow_html=True)
+st.write("<h4 style='text-align: center; color: #ffb3b3;'>A special day for a very special person.</h4>", unsafe_allow_html=True)
 
-with col1:
-    st.image("photo1.jpg", use_container_width=True)
-with col2:
-    st.image("photo2.jpg", use_container_width=True)
-with col3:
-    st.image("photo3.jpg", use_container_width=True)
-
-# 5. The "Secret Vault" Surprise
 st.write("---")
-st.write("### 🎁 There's something more...")
 
-# This "Expander" acts as a hidden surprise
-with st.expander("CLICK TO OPEN THE SECRET MEMORY VAULT 🔒"):
-    st.write("#### You thought that was it? Here are some extra favorites!")
-    
-    # Grid for more photos
+# 5. The Main Gallery (3 Images)
+st.write("### 🌹 Our Favorite Moments")
+m_col1, m_col2, m_col3 = st.columns(3)
+
+with m_col1:
+    st.image("photo1.jpg", caption="The beginning ✨")
+
+with m_col2:
+    st.image("photo2.jpg", caption="Pure joy ❤️")
+
+with m_col3:
+    st.image("photo3.jpg", caption="Always you 🌹")
+
+st.write("---")
+
+# 6. The Surprise Vault (2 More Images)
+with st.expander("🎁 CLICK TO UNLOCK THE FINAL SURPRISE"):
+    st.write("#### I saved the best for last...")
     v_col1, v_col2 = st.columns(2)
-    with v_col1:
-        st.image("photo4.jpg", caption="Throwback!", use_container_width=True)
-    with v_col2:
-        st.image("photo5.jpg", caption="The best day.", use_container_width=True)
     
-    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3") # Optional: placeholder music link
-    st.success("You're the best! 🥂")
-
-# 6. Interactive Toast Surprise
-if st.button('Click for a Birthday Toast! 🥂'):
-    st.snow()
-    st.confetti = True
-    st.write("### 🥂 Cheers to you!")
-    st.write("May your year be filled with success, laughter, and endless joy.")
-
+    with v_col1:
+        st.image("photo4.jpg", caption="Unforgettable.")
+    
+    with v_col2:
+        st.image("photo5.jpg", caption="To many more years!")
+        
+    st.write("### You are truly one of a kind. Enjoy every second of your day! 🥂")
+    if st.button("Click for Fireworks! 🎆"):
+        st.snow()
+        st.balloons()
