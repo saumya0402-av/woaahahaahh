@@ -1,10 +1,9 @@
 import streamlit as st
-import time
 
 # 1. Page Configuration
-st.set_page_config(page_title="A Special Journey", page_icon="🌻", layout="wide")
+st.set_page_config(page_title="HBD Superstar", page_icon="🌻", layout="wide")
 
-# 2. Custom CSS (Maroon Theme + Glowing Borders + Sunflower Animation)
+# 2. Advanced CSS for Centering and Glow
 st.markdown("""
     <style>
     .stApp {
@@ -12,94 +11,110 @@ st.markdown("""
         color: #ffffff;
     }
     
-    /* Yellow Glowing Title */
-    .glow-text {
+    /* Extra Large Glowing Titles */
+    .big-glow {
         font-family: 'Georgia', serif;
-        font-size: 50px;
+        font-size: 80px !important;
         text-align: center;
         color: #ffcc00;
-        text-shadow: 0 0 15px #ffcc00;
-        margin-top: 50px;
+        text-shadow: 0 0 20px #ffcc00, 0 0 40px #ffae00;
+        padding: 50px 0px;
     }
 
-    /* Glowing Borders for Images */
-    .stImage > img {
-        border: 4px solid #ffcc00;
-        border-radius: 15px;
-        box-shadow: 0 0 20px #ffcc00;
-    }
-
-    /* Centralized Button Style */
+    /* Centered Button Styling */
     div.stButton > button {
         display: block;
         margin: 0 auto;
-        background-color: #ffcc00;
-        color: #4a0000;
-        font-weight: bold;
+        background: linear-gradient(45deg, #ffcc00, #ffae00);
+        color: #4a0000 !important;
+        font-size: 24px !important;
+        font-weight: bold !important;
+        border-radius: 50px;
+        padding: 15px 40px;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    }
+
+    /* Glowing Image Borders */
+    .stImage > img {
+        border: 4px solid #ffcc00;
         border-radius: 20px;
-        padding: 10px 25px;
-        border: none;
+        box-shadow: 0 0 25px #ffcc00;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. Initialize the "Page Tracker"
+# 3. Session State for Navigation
 if 'page' not in st.session_state:
     st.session_state.page = 1
 
 def go_to_page(page_number):
     st.session_state.page = page_number
 
-# --- PAGE 1: THE INTRO ---
+# --- PAGE 1: THE BIG OPENING ---
 if st.session_state.page == 1:
-    st.markdown('<p class="glow-text">It\'s Your Special Day...</p>', unsafe_allow_html=True)
-    st.write("<br><br>", unsafe_allow_html=True)
-    if st.button("Open Your Gift 🎁"):
-        go_to_page(2)
-        st.rerun()
-
-# --- PAGE 2: THE SURPRISE REVEAL ---
-elif st.session_state.page == 2:
-    st.write("<br><br>", unsafe_allow_html=True)
-    if st.button("Sup Babe? 😉"):
-        st.session_state.reveal_photos = True
+    st.balloons() # Popping up immediately
+    st.markdown('<p class="big-glow">ITS YOUR<br>SPECIAL DAY..</p>', unsafe_allow_html=True)
     
-    if st.session_state.get('reveal_photos', False):
-        # Trigger Sunflower "Drizzle" (Using Snowflakes logic but themed)
-        st.snow() 
-        st.markdown('<p class="glow-text">🌻 You Radiate Sunshine 🌻</p>', unsafe_allow_html=True)
-        
-        # All 5 photos in a single row
-        col1, col2, col3, col4, col5 = st.columns(5)
-        with col1: st.image("avi1.jpeg")
-        with col2: st.image("avi5.jpeg")
-        with col3: st.image("avi6.jpeg")
-        with col4: st.image("avi7.jpeg")
-        with col5: st.image("avi9.jpeg")
-        
-        st.write("<br>", unsafe_allow_html=True)
-        if st.button("For You ❤️"):
-            go_to_page(3)
+    # Using columns to force the button to the absolute center
+    col_l, col_btn, col_r = st.columns([1, 2, 1])
+    with col_btn:
+        if st.button("OPEN YOUR GIFT 🎁"):
+            go_to_page(2)
             st.rerun()
 
-# --- PAGE 3: THE MESSAGE ---
+# --- PAGE 2: THE "SUP BABE" REVEAL ---
+elif st.session_state.page == 2:
+    st.write("<br><br><br>", unsafe_allow_html=True)
+    
+    # Centered "Sup Babe" Button
+    col_l, col_btn, col_r = st.columns([1, 1, 1])
+    with col_btn:
+        if st.button("SUP BABE? 😉"):
+            st.session_state.reveal_photos = True
+    
+    if st.session_state.get('reveal_photos', False):
+        # The Drizzle Effect (Balloons + Snow + Sunflowers)
+        st.balloons() 
+        st.snow()
+        st.toast("SURPRISE! 🌻✨")
+        
+        st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻🌻🌻🌻🌻</p>', unsafe_allow_html=True)
+        
+        # 5 Photos in a Single Row
+        cols = st.columns(5)
+        for i in range(5):
+            with cols[i]:
+                st.image(f"photo{i+1}.jpg", use_container_width=True)
+        
+        st.write("<br><br>", unsafe_allow_html=True)
+        # Centered "For You" Button
+        col_l, col_btn, col_r = st.columns([1, 1, 1])
+        with col_btn:
+            if st.button("FOR YOU ❤️"):
+                go_to_page(3)
+                st.rerun()
+
+# --- PAGE 3: THE HEARTFELT MESSAGE ---
 elif st.session_state.page == 3:
-    st.markdown('<p class="glow-text">My Heartfelt Wish</p>', unsafe_allow_html=True)
+    st.markdown('<p class="big-glow" style="font-size:50px !important;">MY WISH FOR YOU</p>', unsafe_allow_html=True)
     
-    # Message Box
-    st.write("---")
-    st.markdown("""
-    <div style="background-color: rgba(255, 204, 0, 0.1); padding: 30px; border-radius: 20px; border: 1px solid #ffcc00; text-align: center;">
-        <h2 style="color: #ffcc00;">To My Favorite Person,</h2>
-        <p style="font-size: 20px; line-height: 1.6;">
-            I wanted to create something as unique and bright as you are. 
-            May your year be filled with the same warmth you give to everyone around you. 
-            Happy Birthday, and I hope you loved this little surprise!
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    col_l, col_msg, col_r = st.columns([1, 3, 1])
+    with col_msg:
+        st.markdown("""
+        <div style="background-color: rgba(255, 204, 0, 0.1); padding: 40px; border-radius: 30px; border: 2px solid #ffcc00; text-align: center;">
+            <h1 style="color: #ffcc00;">Dear [Name],</h1>
+            <p style="font-size: 24px; line-height: 1.8; color: #ffb3b3;">
+                Happy Birthday! You are the most incredible person I know. 
+                May your day be filled with sunflowers, laughter, and all the love 
+                you deserve. I hope this little digital gift made you smile!
+            </p>
+            <h2 style="color: #ffcc00;">✨ Stay Golden! ✨</h2>
+        </div>
+        """, unsafe_allow_html=True)
     
-    if st.button("Start Over 🔄"):
+    st.write("<br>", unsafe_allow_html=True)
+    if st.button("START OVER 🔄"):
         st.session_state.reveal_photos = False
         go_to_page(1)
         st.rerun()
