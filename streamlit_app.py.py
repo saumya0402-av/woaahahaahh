@@ -57,7 +57,7 @@ def go_to_page(page_number):
 # --- PAGE 1: THE BIG OPENING ---
 if st.session_state.page == 1:
     st.balloons()
-    st.markdown('<p class="big-glow">ITS YOUR<br>SPECIAL DAY..</p>', unsafe_allow_html=True)
+    st.markdown('<p class="big-glow">ITS YOUR DAYY GURRLLL <br> 🤤🤤🤤🤤🤤🤤🫦🫦🫦🫦🫦🫦..</p>', unsafe_allow_html=True)
     
     # Centering the button
     _, col_btn, _ = st.columns([1, 2, 1])
@@ -125,4 +125,5 @@ elif st.session_state.page == 3:
         st.session_state.reveal_photos = False
         go_to_page(1)
         st.rerun()
+
 
