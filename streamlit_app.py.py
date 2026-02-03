@@ -53,9 +53,9 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- GLOBAL CELEBRATION (Runs on every page refresh) ---
-st.balloons() # Party Poppers/Balloons on every page
-st.snow()     # The "Drizzle" effect on every page
+# --- GLOBAL CELEBRATION ---
+st.balloons() 
+st.snow()     
 
 # 3. Navigation Memory
 if 'page' not in st.session_state:
@@ -86,7 +86,6 @@ elif st.session_state.page == 2:
     if st.session_state.get('reveal_photos', False):
         st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻AAYYYYY HAAYYYEEEEEE🌻🌻🌻</p>', unsafe_allow_html=True)
         
-        # 5 Photos in a Single Row - Ensure these names match your GitHub files exactly!
         cols = st.columns(5)
         with cols[0]: st.image("avi1.jpeg")
         with cols[1]: st.image("avi5.jpeg")
@@ -105,6 +104,14 @@ elif st.session_state.page == 2:
 elif st.session_state.page == 3:
     st.markdown('<p class="big-glow" style="font-size:45px !important;">FOR YOU</p>', unsafe_allow_html=True)
     
+    # Hero Image for the final page
+    _, col_hero, _ = st.columns([1, 2, 1])
+    with col_hero:
+        # REPLACE "hero_image.jpeg" with your final photo filename
+        st.image("", use_container_width=True)
+    
+    st.write("<br>", unsafe_allow_html=True)
+
     _, col_msg, _ = st.columns([1, 4, 1])
     with col_msg:
         st.markdown("""
@@ -126,8 +133,12 @@ elif st.session_state.page == 3:
         """, unsafe_allow_html=True)
     
     st.write("<br>", unsafe_allow_html=True)
-    if st.button("START OVER 🔄"):
-        st.session_state.reveal_photos = False
-        go_to_page(1)
-        st.rerun()
+    
+    # Centered Start Over Button
+    _, col_reset, _ = st.columns([1, 1, 1])
+    with col_reset:
+        if st.button("START OVER 🔄"):
+            st.session_state.reveal_photos = False
+            go_to_page(1)
+            st.rerun()
 
