@@ -3,7 +3,7 @@ import streamlit as st
 # 1. Page Configuration
 st.set_page_config(page_title="HBD Superstar", page_icon="🌻", layout="wide")
 
-# 2. Advanced CSS for Theme and Animations
+# 2. Advanced CSS for Theme, Animations, and Background Sparkles
 st.markdown("""
     <style>
     .stApp {
@@ -32,6 +32,12 @@ st.markdown("""
         padding: 12px 35px;
         border: 2px solid #ffffff;
         box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+        transition: transform 0.2s;
+    }
+    
+    div.stButton > button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px #ffcc00;
     }
 
     /* Glowing Image Borders */
@@ -47,6 +53,10 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+# --- GLOBAL CELEBRATION (Runs on every page refresh) ---
+st.balloons() # Party Poppers/Balloons on every page
+st.snow()     # The "Drizzle" effect on every page
+
 # 3. Navigation Memory
 if 'page' not in st.session_state:
     st.session_state.page = 1
@@ -56,10 +66,8 @@ def go_to_page(page_number):
 
 # --- PAGE 1: THE BIG OPENING ---
 if st.session_state.page == 1:
-    st.balloons()
     st.markdown('<p class="big-glow">ITS YOUR DAYY GURRLLL 🤤🤤🤤🤤🤤🤤🫦🫦🫦🫦🫦🫦..</p>', unsafe_allow_html=True)
     
-    # Centering the button
     _, col_btn, _ = st.columns([1, 2, 1])
     with col_btn:
         if st.button("OPEN YOUR GIFT 🎁"):
@@ -70,18 +78,15 @@ if st.session_state.page == 1:
 elif st.session_state.page == 2:
     st.write("<br><br>", unsafe_allow_html=True)
     
-    _, col_btn, _ = st.columns([1, 1, 1])
+    _, col_btn, _ = st.columns([1, 2, 1])
     with col_btn:
         if st.button("HAPPIESTTT BIRTHDAYYYY DESIIESTTT POTLIIIII 🥹🥹🫶🏻🫶🏻"):
             st.session_state.reveal_photos = True
     
     if st.session_state.get('reveal_photos', False):
-        st.balloons() 
-        st.snow() # Falling drizzle effect
+        st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻AAYYYYY HAAYYYEEEEEE🌻🌻🌻</p>', unsafe_allow_html=True)
         
-        st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻AAYYYYY HAAYYYEEEEEE SIS KEM CHE TU MARI SHEH🌻🌻🌻</p>', unsafe_allow_html=True)
-        
-        # 5 Photos in a Single Row
+        # 5 Photos in a Single Row - Ensure these names match your GitHub files exactly!
         cols = st.columns(5)
         with cols[0]: st.image("avi1.jpeg")
         with cols[1]: st.image("avi5.jpeg")
@@ -104,18 +109,18 @@ elif st.session_state.page == 3:
     with col_msg:
         st.markdown("""
         <div style="background-color: rgba(255, 204, 0, 0.1); padding: 30px; border-radius: 25px; border: 2px solid #ffcc00; text-align: center;">
-            <h1 style="color: #ffcc00;">To My Favorite Person, BEING THE ONLY HABIT I NEVER WANNA BREAK,</h1>
-            <p style="font-size: 22px; color: #ffb3b3;">
-                AAVVVVIISSHHAAA BBAABBBYYYYYYYYYYYYYY!!!!!!!!
-                HAAPPPPPPYYYYYYYYYY BIRTHHDDAAYYYYYYYYYYYYYYY DARLINNGGG
+            <h1 style="color: #ffcc00;">To My Favorite Person, <br>BEING THE ONLY HABIT I NEVER WANNA BREAK,</h1>
+            <p style="font-size: 20px; color: #ffb3b3; line-height: 1.6;">
+                AAVVVVIISSHHAAA BBAABBBYYYYYYYYYYYYYY!!!!!!!! <br><br>
+                HAAPPPPPPYYYYYYYYYY BIRTHHDDAAYYYYYYYYYYYYYYY DARLINNGGG <br>
                 Thankyou so much for being the only dessiiii potlii to ever exist in my life
-                being the hottest in our whole bloodline, SLAYING everywhere u go
-                Making ur own cousin question himself ke bhenchooddd annooo bhaii ajj kem banayoooo 
-                parn koy othoo naiii.
-                Being the only person in my life jena jode bc 2 min na kam thi call kryo hoye and ends up on call for straight 3 HRS.
-                Hope you earn some real good shit and gift me reall cooll shiittt
-                YOU GOOOO GUURRLLLLLLLLLLL!!!!!! KEEP SLAYINNGGGGGGGG BICHHHH!!
-                TO ANOTHER YEAR OF BEING THE BEST PART OF EVERYONE'S DAY
+                being the hottest in our whole bloodline, SLAYING everywhere u go <br><br>
+                Making ur own cousin question himself ke <i>"bhenchooddd annooo bhaii ajj kem banayoooo 
+                parn koy othoo naiii"</i>. <br><br>
+                Being the only person in my life jena jode bc 2 min na kam thi call kryo hoye and ends up on call for straight 3 HRS. <br><br>
+                Hope you earn some real good shit and gift me reall cooll shiittt <br>
+                YOU GOOOO GUURRLLLLLLLLLLL!!!!!! KEEP SLAYINNGGGGGGGG BICHHHH!! <br>
+                <b>TO ANOTHER YEAR OF BEING THE BEST PART OF EVERYONE'S DAY</b>
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -125,6 +130,4 @@ elif st.session_state.page == 3:
         st.session_state.reveal_photos = False
         go_to_page(1)
         st.rerun()
-
-
 
