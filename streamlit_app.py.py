@@ -108,7 +108,7 @@ elif st.session_state.page == 3:
     _, col_hero, _ = st.columns([1, 2, 1])
     with col_hero:
         # REPLACE "hero_image.jpeg" with your final photo filename
-        st.image("", use_container_width=True)
+        st.image("LOL.jpeg", use_container_width=True)
     
     st.write("<br>", unsafe_allow_html=True)
 
@@ -141,4 +141,5 @@ elif st.session_state.page == 3:
             st.session_state.reveal_photos = False
             go_to_page(1)
             st.rerun()
+
 
