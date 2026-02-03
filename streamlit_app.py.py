@@ -57,7 +57,7 @@ def go_to_page(page_number):
 # --- PAGE 1: THE BIG OPENING ---
 if st.session_state.page == 1:
     st.balloons()
-    st.markdown('<p class="big-glow">ITS YOUR DAYY GURRLLL <br> 🤤🤤🤤🤤🤤🤤🫦🫦🫦🫦🫦🫦..</p>', unsafe_allow_html=True)
+    st.markdown('<p class="big-glow">ITS YOUR DAYY GURRLLL 🤤🤤🤤🤤🤤🤤🫦🫦🫦🫦🫦🫦..</p>', unsafe_allow_html=True)
     
     # Centering the button
     _, col_btn, _ = st.columns([1, 2, 1])
@@ -79,7 +79,7 @@ elif st.session_state.page == 2:
         st.balloons() 
         st.snow() # Falling drizzle effect
         
-        st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻🌻🌻🌻🌻</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align:center; font-size:40px;">🌻🌻🌻AAYYYYY HAAYYYEEEEEE SIS KEM CHE TU MARI SHEH🌻🌻🌻</p>', unsafe_allow_html=True)
         
         # 5 Photos in a Single Row
         cols = st.columns(5)
@@ -98,7 +98,7 @@ elif st.session_state.page == 2:
 
 # --- PAGE 3: THE HEARTFELT MESSAGE ---
 elif st.session_state.page == 3:
-    st.markdown('<p class="big-glow" style="font-size:45px !important;">A SPECIAL MESSAGE</p>', unsafe_allow_html=True)
+    st.markdown('<p class="big-glow" style="font-size:45px !important;">FOR YOU</p>', unsafe_allow_html=True)
     
     _, col_msg, _ = st.columns([1, 4, 1])
     with col_msg:
@@ -125,5 +125,6 @@ elif st.session_state.page == 3:
         st.session_state.reveal_photos = False
         go_to_page(1)
         st.rerun()
+
 
 
