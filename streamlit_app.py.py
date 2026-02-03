@@ -72,7 +72,7 @@ elif st.session_state.page == 2:
     
     _, col_btn, _ = st.columns([1, 1, 1])
     with col_btn:
-        if st.button("SUP BABE? 😉"):
+        if st.button("HAPPIESTTT BIRTHDAYYYY DESIIESTTT POTLIIIII 🥹🥹🫶🏻🫶🏻"):
             st.session_state.reveal_photos = True
     
     if st.session_state.get('reveal_photos', False):
@@ -104,11 +104,18 @@ elif st.session_state.page == 3:
     with col_msg:
         st.markdown("""
         <div style="background-color: rgba(255, 204, 0, 0.1); padding: 30px; border-radius: 25px; border: 2px solid #ffcc00; text-align: center;">
-            <h1 style="color: #ffcc00;">To My Favorite Person,</h1>
+            <h1 style="color: #ffcc00;">To My Favorite Person, BEING THE ONLY HABIT I NEVER WANNA BREAK,</h1>
             <p style="font-size: 22px; color: #ffb3b3;">
-                I wanted to make something as bright as your smile. 
-                May your day be filled with sunflowers and endless joy. 
-                You deserve the best birthday ever!
+                AAVVVVIISSHHAAA BBAABBBYYYYYYYYYYYYYY!!!!!!!!
+                HAAPPPPPPYYYYYYYYYY BIRTHHDDAAYYYYYYYYYYYYYYY DARLINNGGG
+                Thankyou so much for being the only dessiiii potlii to ever exist in my life
+                being the hottest in our whole bloodline, SLAYING everywhere u go
+                Making ur own cousin question himself ke bhenchooddd annooo bhaii ajj kem banayoooo 
+                parn koy othoo naiii.
+                Being the only person in my life jena jode bc 2 min na kam thi call kryo hoye and ends up on call for straight 3 HRS.
+                Hope you earn some real good shit and gift me reall cooll shiittt
+                YOU GOOOO GUURRLLLLLLLLLLL!!!!!! KEEP SLAYINNGGGGGGGG BICHHHH!!
+                TO ANOTHER YEAR OF BEING THE BEST PART OF EVERYONE'S DAY
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -118,3 +125,4 @@ elif st.session_state.page == 3:
         st.session_state.reveal_photos = False
         go_to_page(1)
         st.rerun()
+
